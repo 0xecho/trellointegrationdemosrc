@@ -18,7 +18,6 @@
 
       <v-spacer></v-spacer>
 
-      <!-- a navbar dropdown a bit to the left from the edge -->
       <v-menu
         :close-on-content-click="false"
         :nudge-width="200"
@@ -81,7 +80,32 @@
     </v-app-bar>
 
     <v-main>
-      <Card/>
+        <br>
+        <div style="margin-right: 30px">
+
+        <v-row
+          cols="12"
+          justify="end"
+        >
+        
+          <v-col 
+            cols="7"
+            style="color: #000"
+            >
+            <Card />
+          </v-col>
+
+          <v-col 
+            cols="3"
+            style="color: #000"
+            >
+            <div>
+
+              <Issues/>
+            </div>
+          </v-col>
+        </v-row>
+        </div>
     </v-main>
   </v-app>
 </template>
@@ -90,6 +114,7 @@
 import Card from './components/Card';
 import SelectBoard from './components/SelectBoard';
 import LinkToTrello from './components/LinkToTrello';
+import Issues from './components/Issues';
 
 export default {
   name: 'App',
@@ -112,6 +137,7 @@ export default {
     Card,
     SelectBoard,
     LinkToTrello,
+    Issues,
   },
 
   methods: {
