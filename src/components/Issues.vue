@@ -10,7 +10,7 @@
               {{ issue.name }}
             </v-list-item-title>
 
-            <v-btn color="primary" dark small @click="addToCanvas(issue.id)">
+            <v-btn color="primary" dark small @click="addToCanvas(issue)">
               <v-icon>mdi-plus</v-icon>
               Add to canvas
             </v-btn>
@@ -47,6 +47,9 @@ export default {
             this.issues = data;
           }
         })
+    },
+    addToCanvas(card) {
+      this.$emit('add-to-canvas', card);
     },
   },
   mounted() {

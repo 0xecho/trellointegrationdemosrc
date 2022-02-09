@@ -92,7 +92,7 @@
             cols="7"
             style="color: #000"
             >
-            <Card />
+            <Board :cards="cards" @remove="removeCard"/>
           </v-col>
 
           <v-col 
@@ -101,7 +101,7 @@
             >
             <div>
 
-              <Issues/>
+              <Issues @add-to-canvas="addToCanvas"/>
             </div>
           </v-col>
         </v-row>
@@ -111,10 +111,10 @@
 </template>
 
 <script>
-import Card from './components/Card';
 import SelectBoard from './components/SelectBoard';
 import LinkToTrello from './components/LinkToTrello';
 import Issues from './components/Issues';
+import Board from './components/Board.vue';
 
 export default {
   name: 'App',
@@ -130,14 +130,15 @@ export default {
       sketchId: "",
       userId: "",
       selectBoardVisible: false,
+      cards: [],
     }
   },
 
   components: {
-    Card,
     SelectBoard,
     LinkToTrello,
     Issues,
+    Board,
   },
 
   methods: {
@@ -154,6 +155,12 @@ export default {
     closeDialog(){
       console.log('close dialog');
       this.selectBoardVisible = false;
+    },
+    addToCanvas(card){
+      this.cards.push(card);
+    },
+    removeCard(card_id){
+      this.cards = this.cards.filter(card => card.id != card_id);
     },
   },
 

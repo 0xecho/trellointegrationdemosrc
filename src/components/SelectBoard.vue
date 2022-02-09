@@ -17,6 +17,7 @@
       <v-card-text>
         <v-select
           :items="boards"
+          :disabled="selectedOrganization === null"
           label="Board"
           v-model="selectedBoard"
           item-text="name"
