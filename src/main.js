@@ -15,8 +15,10 @@ new Vue({
 
   computed: {
     ActiveView () {
-      console.log(window.location.pathname);
-      return window.location.pathname == '/trello-callback' ? TrelloCallback : App;
+      if (window.location.hash.match(/token=/)) {
+        return TrelloCallback
+      }
+      return App
     }
   },
 
