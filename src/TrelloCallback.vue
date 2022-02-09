@@ -22,7 +22,7 @@ export default {
             console.log(data);
             // remove the hash from the url
             window.location.hash = "";
-        }).error(function(err) {
+        }).catch(function(err) {
             console.log(err);
             window.location.hash = "";
         });
