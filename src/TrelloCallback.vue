@@ -21,10 +21,12 @@ export default {
         .then(data => {
             console.log(data);
             // remove the hash from the url
-            window.location.hash = "";
+            window.location.href = window.location.href.split('#')[0];
+            
         }).catch(function(err) {
             console.log(err);
-            window.location.hash = "";
+            window.location.href = window.location.href.split('#')[0];
+            
         });
     },
 }
