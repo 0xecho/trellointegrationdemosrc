@@ -40,7 +40,7 @@
         </v-btn>
         </template>
 
-        <SelectBoard @close-dialog="closeDialog">
+        <SelectBoard @close-dialog="closeDialog" @selected-board="fetchIssues">
         </SelectBoard>
       </v-menu>
 
@@ -101,7 +101,7 @@
             >
             <div>
 
-              <Issues @add-to-canvas="addToCanvas"/>
+              <Issues @add-to-canvas="addToCanvas" :key="this.issueKey"/>
             </div>
           </v-col>
         </v-row>
@@ -131,6 +131,7 @@ export default {
       userId: "",
       selectBoardVisible: false,
       cards: [],
+      issueKey: 0
     }
   },
 
@@ -162,6 +163,9 @@ export default {
     removeCard(card_id){
       this.cards = this.cards.filter(card => card.id != card_id);
     },
+    fetchIssues(){
+      this.issueKey+=1;
+    }
   },
 
   mounted() {

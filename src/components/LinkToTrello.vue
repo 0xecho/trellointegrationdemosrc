@@ -32,7 +32,7 @@ export default {
     return {
       trelloAPIKey: 'd61396d6f8b46b6f2e883932d79835eb',
       trelloAppName: 'Trello Fl0 Integration',
-      trelloReturnUrl: window.location.origin + window.location.pathname + 'trello-callback',
+      trelloReturnUrl: window.location.href,
     }
   },
   computed: {

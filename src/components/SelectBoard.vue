@@ -105,6 +105,7 @@ export default {
           localStorage.setItem('boardId', this.selectedBoard);
           localStorage.setItem('organizationId', this.selectedOrganization);
           this.buttonText = 'Selected'
+          this.$emit('selected-board')
       }).catch(err => {
           console.log(err);
           this.buttonText = 'Error'
