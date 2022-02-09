@@ -16,7 +16,7 @@ export default {
             userId = Math.random().toString(36);
             localStorage.setItem('userId', userId);
         }
-        fetch("https://api.fl0.com/invision%20/dev/trello%20integration/flows/callback?sketchId=" + sketchId + "&userId=" + userId + "&token=" + token)
+        fetch("https://api.fl0.com/invision%20/dev/trello%20integration/flows/register?sketchId=" + sketchId + "&userId=" + userId + "&token=" + token)
         .then(response => response.json())
         .then(data => {
             console.log(data);

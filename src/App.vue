@@ -24,6 +24,7 @@
         :nudge-width="200"
         transition="scale-transition"
         origin="top right"
+        :value="selectBoardVisible"
       >
         <template v-slot:activator="{ on }">
         <v-btn
@@ -35,13 +36,13 @@
         >
           <span class="white--text">
             <v-icon>mdi-account</v-icon>
-            Select Organization
+            Select Board
           </span>
         </v-btn>
         </template>
 
-        <SelectOrganization>
-        </SelectOrganization>
+        <SelectBoard @close-dialog="closeDialog">
+        </SelectBoard>
       </v-menu>
 
       <v-menu
@@ -87,7 +88,7 @@
 
 <script>
 import Card from './components/Card';
-import SelectOrganization from './components/SelectOrganization';
+import SelectBoard from './components/SelectBoard';
 import LinkToTrello from './components/LinkToTrello';
 
 export default {
@@ -103,12 +104,13 @@ export default {
       },
       sketchId: "",
       userId: "",
+      selectBoardVisible: false,
     }
   },
 
   components: {
     Card,
-    SelectOrganization,
+    SelectBoard,
     LinkToTrello,
   },
 
@@ -122,7 +124,11 @@ export default {
         this.user.name = data.fullName;
         this.user.avatar = data.avatarUrl;
       })
-    }
+    },
+    closeDialog(){
+      console.log('close dialog');
+      this.selectBoardVisible = false;
+    },
   },
 
   mounted() {
@@ -138,7 +144,6 @@ export default {
     }
     this.sketchId = sketchId;
     this.userId = userId;
-    this.getLinkedUser();
   }
 };
 </script>
