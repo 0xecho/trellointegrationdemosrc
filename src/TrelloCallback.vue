@@ -20,10 +20,11 @@ export default {
         .then(response => response.json())
         .then(data => {
             console.log(data);
-            window.location.href = '/';
+            // remove the hash from the url
+            window.location.hash = "";
         }).error(function(err) {
             console.log(err);
-            window.location.href = '/';
+            window.location.hash = "";
         });
     },
 }
