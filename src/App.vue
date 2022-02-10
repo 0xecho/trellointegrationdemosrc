@@ -229,6 +229,8 @@ export default {
       this.issueKey+=1;
     },
     createCard(){
+      this.newCard.isOnTrello = false;
+      this.newCard.url = null;
       this.cards.push(this.newCard);
       this.newCard = {};
       this.createCardVisible = false;

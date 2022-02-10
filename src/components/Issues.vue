@@ -49,6 +49,7 @@ export default {
         })
     },
     addToCanvas(card) {
+      card.isOnTrello = true;
       this.$emit('add-to-canvas', card);
     },
   },
