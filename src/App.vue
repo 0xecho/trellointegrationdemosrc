@@ -87,6 +87,66 @@
           cols="12"
           justify="end"
         >
+          <v-layout
+            row
+            wrap
+            align-center
+            style="margin-left: 50px"
+          >
+            <v-dialog
+              v-model="createCardVisible"
+              max-width="500"
+            >
+              <template v-slot:activator="{ on }">
+                <v-btn
+                  color="primary"
+                  dark
+                  v-on="on"
+                >
+                  <v-icon>mdi-plus</v-icon>
+                  Create Card
+                </v-btn>
+              </template>
+
+              <v-card>
+                <v-card-title>
+                  <span class="headline">Create Card</span>
+                </v-card-title>
+
+                <v-card-text>
+                  <v-text-field
+                    label="Card Text"
+                    v-model="newCard.name"
+                    required
+                  >
+                  </v-text-field>
+                </v-card-text>
+
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+
+                  <v-btn
+                    color="blue darken-1"
+                    text
+                    @click="createCardVisible = false"
+                  >
+                    Cancel
+                  </v-btn>
+
+                  <v-btn
+                    color="blue darken-1"
+                    text
+                    @click="createCard"
+                  >
+                    Create
+                  </v-btn>
+                </v-card-actions>
+              </v-card>
+              
+            </v-dialog>
+
+            
+          </v-layout>
         
           <v-col 
             cols="7"
@@ -130,8 +190,10 @@ export default {
       sketchId: "",
       userId: "",
       selectBoardVisible: false,
+      createCardVisible: false,
       cards: [],
-      issueKey: 0
+      issueKey: 0,
+      newCard: {},
     }
   },
 
@@ -165,7 +227,12 @@ export default {
     },
     fetchIssues(){
       this.issueKey+=1;
-    }
+    },
+    createCard(){
+      this.cards.push(this.newCard);
+      this.newCard = {};
+      this.createCardVisible = false;
+    },
   },
 
   mounted() {
