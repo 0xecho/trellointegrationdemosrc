@@ -46,6 +46,9 @@
         v-model="isDialogVisible"
         max-width="500px"
         >
+        <v-form
+          v-model="addToTrelloFormValid"
+          >
         <v-card>
           <v-card-title>
             <span class="headline">Create Issue on Trello</span>
@@ -58,6 +61,7 @@
               item-text="name"
               item-value="id"
               label="List"
+              :rules="selectedListRules"
               required
               >
             </v-select>
@@ -67,6 +71,7 @@
             <v-text-field
               label="Issue Name"
               v-model="card.name"
+              :rules="newCardNameRules"
               required
             >
             </v-text-field>
@@ -86,12 +91,14 @@
             <v-btn
               color="blue darken-1"
               text
+              :disabled="!addToTrelloFormValid"
               @click="createCard"
             >
               Create
             </v-btn>
           </v-card-actions>
         </v-card>
+        </v-form>
       </v-dialog>
 
     
@@ -119,7 +126,14 @@ export default {
       positionX: 0,
       positionY: 0,
       lists: [],
+      addToTrelloFormValid: false,
       selectedList: null,
+      selectedListRules: [
+        v => !!v || "List is required",
+      ],
+      newCardNameRules: [
+        v => !!v || "Card Name is required",
+      ],
     }
   },
   methods: {

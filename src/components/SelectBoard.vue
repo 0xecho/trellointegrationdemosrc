@@ -28,6 +28,7 @@
         <v-btn
           color="primary"
           dark
+          :disabled="selectedOrganization === null || selectedBoard === null"
           @click="select"
         >
           {{ buttonText }}
@@ -47,6 +48,7 @@ export default {
       organizations: [],
       boards: [],
       buttonText: 'Select',
+      formValid: false,
     };
   },
   methods: {

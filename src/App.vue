@@ -136,6 +136,7 @@
                   <v-btn
                     color="blue darken-1"
                     text
+                    :disabled="!newCard.name"
                     @click="createCard"
                   >
                     Create
